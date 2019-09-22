@@ -6,7 +6,19 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/dimi/CLionProjects/chrono/main.cpp
+C:/Users/dimi/CLionProjects/chrono/Clock.cpp
 iostream
 -
+sys/types.h
+-
+ctime
+-
+chrono
+-
+thread
+-
+Clock.h
+C:/Users/dimi/CLionProjects/chrono/Clock.h
+
+C:/Users/dimi/CLionProjects/chrono/Clock.h
 
