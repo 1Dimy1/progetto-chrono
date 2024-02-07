@@ -1,0 +1,3 @@
+/home/dimy1/CLionProjects/progetto-chrono/cmake-build-debug/CMakeFiles/FirstC.dir
+/home/dimy1/CLionProjects/progetto-chrono/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/dimy1/CLionProjects/progetto-chrono/cmake-build-debug/CMakeFiles/rebuild_cache.dir
