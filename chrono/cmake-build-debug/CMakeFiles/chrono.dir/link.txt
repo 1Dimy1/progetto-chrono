@@ -1,3 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\chrono.dir/objects.a
-C:\TDM-GCC-32\bin\ar.exe cr CMakeFiles\chrono.dir/objects.a @CMakeFiles\chrono.dir\objects1.rsp
-C:\TDM-GCC-32\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\chrono.dir/objects.a -Wl,--no-whole-archive  -o chrono.exe -Wl,--out-implib,libchrono.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\chrono.dir\linklibs.rsp
