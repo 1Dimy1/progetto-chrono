@@ -6,6 +6,7 @@
 #include "Frame.h"
 
 bool App::OnInit(){
+    //m_locale.Init();
     Frame *frame = new Frame();
     frame->Show(true);
     return true;

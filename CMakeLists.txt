@@ -11,7 +11,9 @@ set(SOURCE_FILES main.cpp
         App.cpp
         App.h
         Frame.cpp
-        Frame.h)
+        Frame.h
+        Clock.cpp
+        Clock.h)
 add_executable(FirstC ${SOURCE_FILES})
 
 target_link_libraries(FirstC ${wxWidgets_LIBRARIES})

@@ -73,6 +73,14 @@ build CMakeFiles/FirstC.dir/Frame.cpp.o: CXX_COMPILER__FirstC_unscanned_Debug /h
   OBJECT_DIR = CMakeFiles/FirstC.dir
   OBJECT_FILE_DIR = CMakeFiles/FirstC.dir
 
+build CMakeFiles/FirstC.dir/Clock.cpp.o: CXX_COMPILER__FirstC_unscanned_Debug /home/dimy1/CLionProjects/progetto-chrono/Clock.cpp || cmake_object_order_depends_target_FirstC
+  DEFINES = -D_FILE_OFFSET_BITS=64 -D__WXGTK__
+  DEP_FILE = CMakeFiles/FirstC.dir/Clock.cpp.o.d
+  FLAGS = -pthread -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -isystem /usr/local/lib/wx/include/gtk3-unicode-static-3.2 -isystem /usr/local/include/wx-3.2
+  OBJECT_DIR = CMakeFiles/FirstC.dir
+  OBJECT_FILE_DIR = CMakeFiles/FirstC.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target FirstC
@@ -81,7 +89,7 @@ build CMakeFiles/FirstC.dir/Frame.cpp.o: CXX_COMPILER__FirstC_unscanned_Debug /h
 #############################################
 # Link the executable FirstC
 
-build FirstC: CXX_EXECUTABLE_LINKER__FirstC_Debug CMakeFiles/FirstC.dir/main.cpp.o CMakeFiles/FirstC.dir/App.cpp.o CMakeFiles/FirstC.dir/Frame.cpp.o | /usr/local/lib/libwx_gtk3u_core-3.2.a /usr/local/lib/libwx_baseu-3.2.a
+build FirstC: CXX_EXECUTABLE_LINKER__FirstC_Debug CMakeFiles/FirstC.dir/main.cpp.o CMakeFiles/FirstC.dir/App.cpp.o CMakeFiles/FirstC.dir/Frame.cpp.o CMakeFiles/FirstC.dir/Clock.cpp.o | /usr/local/lib/libwx_gtk3u_core-3.2.a /usr/local/lib/libwx_baseu-3.2.a
   FLAGS = -pthread -g
   LINK_LIBRARIES = -Wl,-rpath,/usr/local/lib  -L/usr/local/lib  -pthread  /usr/local/lib/libwx_gtk3u_core-3.2.a  /usr/local/lib/libwx_baseu-3.2.a  -lgthread-2.0  -pthread  -lX11  -lSM  -lxkbcommon  -lgtk-3  -lgdk-3  -lpangocairo-1.0  -latk-1.0  -lcairo-gobject  -lcairo  -lgdk_pixbuf-2.0  -lgio-2.0  -lXtst  -lpangoft2-1.0  -lpango-1.0  -lgobject-2.0  -lglib-2.0  -lharfbuzz  -lfontconfig  -lfreetype  -lwxscintilla-3.2  -lexpat  -lpcre2-32  -lpng  -ljpeg  -ltiff  -ljbig  -lz  -lm
   LINK_PATH = -L/usr/local/lib
