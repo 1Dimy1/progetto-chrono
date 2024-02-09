@@ -30,40 +30,19 @@ END_EVENT_TABLE()
 
 Frame::Frame() : wxFrame(nullptr, wxID_ANY, "Hello World")
 {
-    wxStaticText* m_clockDisplay;
     wxTimer       m_clockTimer;
-
 
     wxNotebook *book;
     book = new wxBookCtrl(this, BOOKCTRL);
 
     wxPanel *panel = new Clock(book);
-    /*
-    m_clockDisplay = new wxStaticText(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL | wxST_NO_AUTORESIZE);
-    wxFont font = m_clockDisplay->GetFont();
-    font.MakeBold().MakeLarger();
-    m_clockDisplay->SetFont(font);
-
-    UpdateClock();
-
-    m_clockTimer.Bind(wxEVT_TIMER, &MyFrame::OnUpdateClock, this);
-    m_clockTimer.Start(1000);
-
-
-
-
-*/
     book->AddPage(panel, _T("Orologio"), true);
 
 
 
-
-
     panel = new wxPanel(book);
-    new wxButton( panel, BUTTON1,
-                  _T("Button &1"), wxPoint(50,30), wxSize(100,30) );
-    new wxButton( panel, BUTTON2,
-                  _T("Button &2"), wxPoint(50,80), wxSize(100,30) );
+    new wxButton(panel, BUTTON1, _T("Button &1"), wxPoint(50,30), wxSize(100,30) );
+    new wxButton(panel, BUTTON2, _T("Button &2"), wxPoint(50,80), wxSize(100,30) );
     book->AddPage(panel, _T("Tab2"), false);
 
 
@@ -83,15 +62,3 @@ void Frame::OnTimer(wxCommandEvent& event){
     wxMessageBox("This is a wxWidgets Hello World example",
                  "About Hello World", wxOK | wxICON_INFORMATION);
 }
-/*
-void UpdateClock()
-{
-    m_clockDisplay->SetLabel(wxDateTime::Now().FormatTime());
-}
-
-
-void OnUpdateClock(wxTimerEvent&)
-{
-    UpdateClock();
-}
- */

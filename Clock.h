@@ -11,10 +11,16 @@ class Clock: public wxPanel {
 public:
     Clock(wxWindow* parent);
 private:
-    wxStaticText* m_clockDisplay;
     wxTimer m_clockTimer;
+    wxStaticText *m_clockDisplay;
+    wxRadioBox *radioClockBox;
+    wxStaticText *m_dateDisplay;
+    wxRadioBox *radioDateBox;
+    wxString clockFormat;
+
     void updateClock();
-    void OnUpdateClock(wxTimerEvent& event);
+    void OnUpdateClock(wxTimerEvent &);
+    void OnSelectTimeFormat(wxCommandEvent &event);
 };
 
 
