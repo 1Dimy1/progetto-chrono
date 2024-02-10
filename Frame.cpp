@@ -31,6 +31,7 @@ END_EVENT_TABLE()
 Frame::Frame() : wxFrame(nullptr, wxID_ANY, "Hello World")
 {
     wxTimer       m_clockTimer;
+    wxTimer       m_dateTimer;
 
     wxNotebook *book;
     book = new wxBookCtrl(this, BOOKCTRL);

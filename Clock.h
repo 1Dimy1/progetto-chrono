@@ -12,15 +12,20 @@ public:
     Clock(wxWindow* parent);
 private:
     wxTimer m_clockTimer;
+    wxTimer m_dateTimer;
     wxStaticText *m_clockDisplay;
     wxRadioBox *radioClockBox;
+    wxString clockFormat;
     wxStaticText *m_dateDisplay;
     wxRadioBox *radioDateBox;
-    wxString clockFormat;
+    wxString dateFormat;
 
     void updateClock();
     void OnUpdateClock(wxTimerEvent &);
     void OnSelectTimeFormat(wxCommandEvent &event);
+    void updateDate();
+    void OnUpdateDate(wxTimerEvent &);
+    void OnSelectDateFormat(wxCommandEvent &event);
 };
 
 
