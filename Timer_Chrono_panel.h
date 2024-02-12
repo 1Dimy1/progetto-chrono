@@ -9,12 +9,14 @@
 #include "Timer.h"
 #include "Chrono.h"
 
-class Timer_Chrono_panel : wxPanel{
+class Timer_Chrono_panel : public wxPanel{
 public:
     Timer_Chrono_panel(wxWindow *parent);
 private:
+    wxBoxSizer *sizer;
     wxButton *timer;
     wxButton *chrono;
+    wxPanel *currentPanel;
 
     void OnChrono(wxCommandEvent &event);
     void OnTimer(wxCommandEvent &event);

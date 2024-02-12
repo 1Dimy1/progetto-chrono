@@ -12,8 +12,8 @@ set(SOURCE_FILES main.cpp
         App.h
         Frame.cpp
         Frame.h
-        Clock.cpp
-        Clock.h
+        DateTime.cpp
+        DateTime.h
         Timer.cpp
         Timer.h
         Chrono.cpp

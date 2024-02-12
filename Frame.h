@@ -12,14 +12,8 @@ class Frame : public wxFrame{
 
 public:
     Frame();
-    wxNotebook *book;
-
 private:
-    void OnClock(wxCommandEvent& event);
-    void OnTimer(wxCommandEvent& event);
-
-
-    DECLARE_EVENT_TABLE()
+    wxNotebook *book;
 };
 
 

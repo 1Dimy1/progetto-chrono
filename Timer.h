@@ -14,24 +14,15 @@ public:
     Timer(wxWindow *parent);
 private:
     wxTimer timerTimer;
-
-    wxButton *timer;
-    wxButton *chrono;
+    wxStaticText *timerDisplay;
+    wxTimePickerCtrl *inputTime;
     wxButton *start_stop_resume;
     wxButton *reset;
-
-
-    wxTimePickerCtrl *inputTime;
-    wxStaticText *timerDisplay;
-
     wxString state; //"Init, Running, Stopped"
-    bool isGoing;
-
-    int hh = 0;
-    int mm = 0;
-    int ss = 0;
-
-    int secondsLeft = 0;
+    int hh;
+    int mm;
+    int ss;
+    int secondsLeft;
 
     void updateTimer();
     void OnUpdateTimer(wxTimerEvent &event);
