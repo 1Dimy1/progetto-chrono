@@ -13,7 +13,13 @@ set(SOURCE_FILES main.cpp
         Frame.cpp
         Frame.h
         Clock.cpp
-        Clock.h)
+        Clock.h
+        Timer.cpp
+        Timer.h
+        Chrono.cpp
+        Chrono.h
+        Timer_Chrono_panel.cpp
+        Timer_Chrono_panel.h)
 add_executable(FirstC ${SOURCE_FILES})
 
 target_link_libraries(FirstC ${wxWidgets_LIBRARIES})

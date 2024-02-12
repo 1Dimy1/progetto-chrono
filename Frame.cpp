@@ -2,10 +2,11 @@
 // Created by dimy1 on 08/02/24.
 //
 
+#include "Timer.h"
+#include "Timer_Chrono_panel.h"
 #include "Frame.h"
 #include <wx/notebook.h>
 #include "Clock.h"
-
 
 // Declare some IDs. These are arbitrary.
 const int BOOKCTRL = 100;
@@ -28,12 +29,8 @@ END_EVENT_TABLE()
 
 
 
-Frame::Frame() : wxFrame(nullptr, wxID_ANY, "Hello World")
-{
-    wxTimer       m_clockTimer;
-    wxTimer       m_dateTimer;
+Frame::Frame() : wxFrame(nullptr, wxID_ANY, "Hello World"){
 
-    wxNotebook *book;
     book = new wxBookCtrl(this, BOOKCTRL);
 
     wxPanel *panel = new Clock(book);
@@ -41,9 +38,8 @@ Frame::Frame() : wxFrame(nullptr, wxID_ANY, "Hello World")
 
 
 
-    panel = new wxPanel(book);
-    new wxButton(panel, BUTTON1, _T("Button &1"), wxPoint(50,30), wxSize(100,30) );
-    new wxButton(panel, BUTTON2, _T("Button &2"), wxPoint(50,80), wxSize(100,30) );
+    panel = new Timer_Chrono(book);
+
     book->AddPage(panel, _T("Tab2"), false);
 
 
@@ -63,3 +59,11 @@ void Frame::OnTimer(wxCommandEvent& event){
     wxMessageBox("This is a wxWidgets Hello World example",
                  "About Hello World", wxOK | wxICON_INFORMATION);
 }
+
+/*
+void MainFrame::buildClock(wxCommandEvent&) {
+    this->SetTitle("Clock");
+    currentPanel->Destroy();
+    currentPanel = new Clock(this);  // se voglio mettere il timer tolgo l'orologio (default)
+    // e lo sostituisco con un pannello per il timer
+}*/
