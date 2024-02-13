@@ -6,8 +6,6 @@
 #include "Chrono.h"
 
 enum{
-    ID_timerButton = 10,
-    ID_chronoButton = 11,
     ID_inputTime = 100,
     ID_timerDisplay = 101,
     ID_startStopResumeButton = 120,
@@ -33,7 +31,6 @@ Timer::Timer(wxWindow *parent): wxPanel(parent, wxID_ANY, wxPoint(0,70), wxSize(
 
 
     timerTimer.Bind(wxEVT_TIMER, &Timer::OnUpdateTimer, this);
-    Bind(wxEVT_BUTTON, &Timer::OnChrono, this, ID_chronoButton);
     Bind(wxEVT_BUTTON, &Timer::OnStartStopResume, this, ID_startStopResumeButton);
     Bind(wxEVT_BUTTON, &Timer::OnReset, this, ID_resetButton);
 }
@@ -60,7 +57,7 @@ void Timer::OnUpdateTimer(wxTimerEvent &event) {
     secondsLeft --;
 
     hh = (int) (secondsLeft/3600);
-    mm = (int) (secondsLeft - (hh*3600))/60;
+    mm = (int) ((secondsLeft - (hh*3600))/60);
     ss = secondsLeft - ((hh*3600) + (mm*60));
 
     updateTimer();
@@ -115,11 +112,4 @@ void Timer::OnReset(wxCommandEvent &event) {
     reset->Show(false);
     inputTime->Enable();
     start_stop_resume->SetLabel("Start");
-}
-
-
-void Timer::OnChrono(wxCommandEvent &event) {
-
-    wxPanel *panel = new Chrono(this);
-
 }

@@ -19,16 +19,15 @@ private:
     wxButton *start_stop_resume;
     wxButton *reset;
     wxString state; //"Init, Running, Stopped"
-    int hh;
-    int mm;
-    int ss;
-    int secondsLeft;
+    int hh = 0;
+    int mm = 0;
+    int ss = 0;
+    int secondsLeft = 0;
 
     void updateTimer();
     void OnUpdateTimer(wxTimerEvent &event);
     void OnReset(wxCommandEvent &event);
     void OnStartStopResume(wxCommandEvent &event);
-    void OnChrono(wxCommandEvent &event);
 };
 
 
