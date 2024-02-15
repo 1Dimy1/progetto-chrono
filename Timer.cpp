@@ -27,7 +27,7 @@ Timer::Timer(wxWindow *parent): wxPanel(parent, wxID_ANY, wxPoint(0,70), wxSize(
 
     start_stop_resume = new wxButton(this, ID_startStopResumeButton, "Start", wxPoint(5,110), wxDefaultSize);
 
-    state = "Init";
+    state = Init;
 
 
     timerTimer.Bind(wxEVT_TIMER, &Timer::OnUpdateTimer, this);
@@ -64,7 +64,7 @@ void Timer::OnUpdateTimer(wxTimerEvent &event) {
 
     if(secondsLeft == 0){
         timerTimer.Stop();
-        state = "Init";
+        state = Init;
         reset->Show(false);
         inputTime->Enable();
         start_stop_resume->SetLabel("Start");
@@ -73,7 +73,7 @@ void Timer::OnUpdateTimer(wxTimerEvent &event) {
 
 void Timer::OnStartStopResume(wxCommandEvent &event) {
 
-    if(state == "Init") {
+    if(state == Init) {
         hh = inputTime->GetValue().GetHour();
         mm = inputTime->GetValue().GetMinute();
         ss = inputTime->GetValue().GetSecond();
@@ -83,19 +83,19 @@ void Timer::OnStartStopResume(wxCommandEvent &event) {
 
             updateTimer();
             timerTimer.Start(1000);
-            state = "Running";
+            state = Running;
             reset->Show(true);
             inputTime->Disable();
             start_stop_resume->SetLabel("Stop");
         }
-    }else if(state == "Running"){
+    }else if(state == Running){
 
         timerTimer.Stop();
-        state = "Stopped";
+        state = Stopped;
         start_stop_resume->SetLabel("Resume");
     }else{
         timerTimer.Start(1000);
-        state = "Running";
+        state = Stopped;
         start_stop_resume->SetLabel("Stop");
     }
 }
@@ -108,7 +108,7 @@ void Timer::OnReset(wxCommandEvent &event) {
     ss = 0;
     secondsLeft = 0;
     updateTimer();
-    state = "Init";
+    state = Init;
     reset->Show(false);
     inputTime->Enable();
     start_stop_resume->SetLabel("Start");

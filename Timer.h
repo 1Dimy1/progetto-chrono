@@ -9,16 +9,18 @@
 #include <wx/timectrl.h>
 
 
+
 class Timer: public wxPanel{
 public:
     Timer(wxWindow *parent);
 private:
+    enum State{Init,Running,Stopped};
     wxTimer timerTimer;
     wxStaticText *timerDisplay;
     wxTimePickerCtrl *inputTime;
     wxButton *start_stop_resume;
     wxButton *reset;
-    wxString state; //"Init, Running, Stopped"
+    State state; //"Init, Running, Stopped"
     int hh = 0;
     int mm = 0;
     int ss = 0;
@@ -28,7 +30,9 @@ private:
     void OnUpdateTimer(wxTimerEvent &event);
     void OnReset(wxCommandEvent &event);
     void OnStartStopResume(wxCommandEvent &event);
+
 };
+
 
 
 #endif //PROGETTO_CHRONO_TIMER_H

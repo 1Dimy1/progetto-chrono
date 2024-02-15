@@ -17,13 +17,13 @@ Chrono::Chrono(wxWindow *parent) : wxPanel(parent, wxID_ANY, wxPoint(0,70), wxSi
     font.MakeBold().MakeLarger();
     chronoDisplay->SetFont(font);
 
-    reset = new wxButton(this, ID_resetButton, "Reset", wxPoint(130,0), wxDefaultSize);
-    reset->Show(false);
+    resetBTN = new wxButton(this, ID_resetButton, "Reset", wxPoint(130, 0), wxDefaultSize);
+    resetBTN->Show(false);
 
 
     start_stop_resume = new wxButton(this, ID_startStopResumeButton, "Start", wxPoint(5,110), wxDefaultSize);
 
-    state = "Init";
+    state = Init;
 
 
     chronoTimer.Bind(wxEVT_TIMER, &Chrono::OnUpdateChrono, this);
@@ -54,6 +54,49 @@ void Chrono::updateChrono(){
     chronoDisplay->SetLabel(time);
 
 }
+
+void Chrono::start(){
+    hh = 0;
+    mm = 0;
+    ss = 0;
+    cents = 0;
+
+    totalCents = 0;
+
+    updateChrono();
+    chronoTimer.Start(10);
+    state = Running;
+    resetBTN->Show(true);
+    start_stop_resume->SetLabel("Stop");
+}
+
+void Chrono::stop(){
+    chronoTimer.Stop();
+    state = Stopped;
+    start_stop_resume->SetLabel("Resume");
+}
+
+void Chrono::resume(){
+    chronoTimer.Start(10);
+    state = Running;
+    start_stop_resume->SetLabel("Stop");
+}
+
+void Chrono::reset(){
+    chronoTimer.Stop();
+    hh = 0;
+    mm = 0;
+    ss = 0;
+    cents = 0;
+
+    totalCents = 0;
+
+    updateChrono();
+    state = Init;
+    resetBTN->Show(false);
+    start_stop_resume->SetLabel("Start");
+}
+
 void Chrono::OnUpdateChrono(wxTimerEvent &event){
 
     totalCents ++;
@@ -66,43 +109,52 @@ void Chrono::OnUpdateChrono(wxTimerEvent &event){
     updateChrono();
 }
 void Chrono::OnReset(wxCommandEvent &event){
-
-    chronoTimer.Stop();
-    hh = 0;
-    mm = 0;
-    ss = 0;
-    cents = 0;
-
-    totalCents = 0;
-
-    updateChrono();
-    state = "Init";
-    reset->Show(false);
-    start_stop_resume->SetLabel("Start");
+    reset();
 }
 void Chrono::OnStartStopResume(wxCommandEvent &event){
 
-    if(state == "Init") {
-        hh = 0;
-        mm = 0;
-        ss = 0;
-        cents = 0;
+    if(state == Init) {
+        start();
 
-        totalCents = 0;
-
-        updateChrono();
-        chronoTimer.Start(10);
-        state = "Running";
-        reset->Show(true);
-        start_stop_resume->SetLabel("Stop");
-
-    }else if(state == "Running"){
-        chronoTimer.Stop();
-        state = "Stopped";
-        start_stop_resume->SetLabel("Resume");
+    }else if(state == Running){
+        stop();
     }else{
-        chronoTimer.Start(10);
-        state = "Running";
-        start_stop_resume->SetLabel("Stop");
+        resume();
     }
+}
+
+wxButton *Chrono::getStartStopResume() const {
+    return start_stop_resume;
+}
+
+wxStaticText *Chrono::getChronoDisplay() const {
+    return chronoDisplay;
+}
+
+wxButton *Chrono::getReset() const {
+    return resetBTN;
+}
+
+Chrono::State Chrono::getState() const {
+    return state;
+}
+
+int Chrono::getHh() const {
+    return hh;
+}
+
+int Chrono::getMm() const {
+    return mm;
+}
+
+int Chrono::getSs() const {
+    return ss;
+}
+
+int Chrono::getCents() const {
+    return cents;
+}
+
+int Chrono::getTotalCents() const {
+    return totalCents;
 }
