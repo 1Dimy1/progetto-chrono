@@ -13,13 +13,36 @@
 class Timer: public wxPanel{
 public:
     Timer(wxWindow *parent);
-private:
     enum State{Init,Running,Stopped};
+    void start();
+    void stop();
+    void resume();
+    void reset();
+
+    wxStaticText *getTimerDisplay() const;
+    wxTimePickerCtrl *getInputTime() const;
+    wxButton *getStartStopResume() const;
+    wxButton *getResetBTN() const;
+    State getState() const;
+    int getHh() const;
+    int getMm() const;
+    int getSs() const;
+    int getSecondsLeft() const;
+
+private:
     wxTimer timerTimer;
     wxStaticText *timerDisplay;
     wxTimePickerCtrl *inputTime;
     wxButton *start_stop_resume;
-    wxButton *reset;
+    wxButton *resetBTN;
+public:
+    void setHh(int hh);
+
+    void setMm(int mm);
+
+    void setSs(int ss);
+
+private:
     State state; //"Init, Running, Stopped"
     int hh = 0;
     int mm = 0;

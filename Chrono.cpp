@@ -131,7 +131,7 @@ wxStaticText *Chrono::getChronoDisplay() const {
     return chronoDisplay;
 }
 
-wxButton *Chrono::getReset() const {
+wxButton *Chrono::getResetBTN() const {
     return resetBTN;
 }
 

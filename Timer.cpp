@@ -19,8 +19,8 @@ Timer::Timer(wxWindow *parent): wxPanel(parent, wxID_ANY, wxPoint(0,70), wxSize(
     font.MakeBold().MakeLarger();
     timerDisplay->SetFont(font);
 
-    reset = new wxButton(this, ID_resetButton, "Interrompi", wxPoint(90,0), wxDefaultSize);
-    reset->Show(false);
+    resetBTN = new wxButton(this, ID_resetButton, "Interrompi", wxPoint(90, 0), wxDefaultSize);
+    resetBTN->Show(false);
 
     inputTime = new wxTimePickerCtrl(this, ID_inputTime, wxDefaultDateTime, wxPoint(5,70), wxDefaultSize);
     inputTime->SetTime(0,0,0);
@@ -52,6 +52,48 @@ void Timer::updateTimer() {
     timerDisplay->SetLabel(time);
 }
 
+void Timer::start() {
+    hh = inputTime->GetValue().GetHour();
+    mm = inputTime->GetValue().GetMinute();
+    ss = inputTime->GetValue().GetSecond();
+    secondsLeft = ss + mm*60 + hh*3600;
+
+    if(secondsLeft != 0){
+
+        updateTimer();
+        timerTimer.Start(1000);
+        state = Running;
+        resetBTN->Show(true);
+        inputTime->Disable();
+        start_stop_resume->SetLabel("Stop");
+    }
+}
+
+void Timer::stop() {
+    timerTimer.Stop();
+    state = Stopped;
+    start_stop_resume->SetLabel("Resume");
+}
+
+void Timer::resume() {
+    timerTimer.Start(1000);
+    state = Running;
+    start_stop_resume->SetLabel("Stop");
+}
+
+void Timer::reset() {
+    timerTimer.Stop();
+    hh = 0;
+    mm = 0;
+    ss = 0;
+    secondsLeft = 0;
+    updateTimer();
+    state = Init;
+    resetBTN->Show(false);
+    inputTime->Enable();
+    start_stop_resume->SetLabel("Start");
+}
+
 void Timer::OnUpdateTimer(wxTimerEvent &event) {
 
     secondsLeft --;
@@ -65,7 +107,7 @@ void Timer::OnUpdateTimer(wxTimerEvent &event) {
     if(secondsLeft == 0){
         timerTimer.Stop();
         state = Init;
-        reset->Show(false);
+        resetBTN->Show(false);
         inputTime->Enable();
         start_stop_resume->SetLabel("Start");
     }
@@ -74,42 +116,62 @@ void Timer::OnUpdateTimer(wxTimerEvent &event) {
 void Timer::OnStartStopResume(wxCommandEvent &event) {
 
     if(state == Init) {
-        hh = inputTime->GetValue().GetHour();
-        mm = inputTime->GetValue().GetMinute();
-        ss = inputTime->GetValue().GetSecond();
-        secondsLeft = ss + mm*60 + hh*3600;
-
-        if(hh != 0 || mm != 0 || ss != 0){
-
-            updateTimer();
-            timerTimer.Start(1000);
-            state = Running;
-            reset->Show(true);
-            inputTime->Disable();
-            start_stop_resume->SetLabel("Stop");
-        }
+        start();
     }else if(state == Running){
-
-        timerTimer.Stop();
-        state = Stopped;
-        start_stop_resume->SetLabel("Resume");
+        stop();
     }else{
-        timerTimer.Start(1000);
-        state = Stopped;
-        start_stop_resume->SetLabel("Stop");
+        resume();
     }
 }
 
 void Timer::OnReset(wxCommandEvent &event) {
+    reset();
+}
 
-    timerTimer.Stop();
-    hh = 0;
-    mm = 0;
-    ss = 0;
-    secondsLeft = 0;
-    updateTimer();
-    state = Init;
-    reset->Show(false);
-    inputTime->Enable();
-    start_stop_resume->SetLabel("Start");
+wxStaticText *Timer::getTimerDisplay() const {
+    return timerDisplay;
+}
+
+wxTimePickerCtrl *Timer::getInputTime() const {
+    return inputTime;
+}
+
+wxButton *Timer::getStartStopResume() const {
+    return start_stop_resume;
+}
+
+wxButton *Timer::getResetBTN() const {
+    return resetBTN;
+}
+
+Timer::State Timer::getState() const {
+    return state;
+}
+
+int Timer::getHh() const {
+    return hh;
+}
+
+int Timer::getMm() const {
+    return mm;
+}
+
+int Timer::getSs() const {
+    return ss;
+}
+
+int Timer::getSecondsLeft() const {
+    return secondsLeft;
+}
+
+void Timer::setHh(int hh) {
+    Timer::hh = hh;
+}
+
+void Timer::setMm(int mm) {
+    Timer::mm = mm;
+}
+
+void Timer::setSs(int ss) {
+    Timer::ss = ss;
 }

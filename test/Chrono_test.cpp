@@ -36,14 +36,14 @@ TEST_F(Chrono_test, checkIsInit){  //controlla la corretta inizializzazione del 
     ASSERT_EQ(chrono->getStartStopResume()->GetLabel(), "Start");
     ASSERT_EQ(chrono->getChronoDisplay()->GetLabel(), "00:00:00:00");
     ASSERT_EQ(chrono->getState(), Init);
-    ASSERT_FALSE(chrono->getReset()->IsShown());
+    ASSERT_FALSE(chrono->getResetBTN()->IsShown());
 }
 
 TEST_F(Chrono_test, checkIsRunning){  //controlla il corretto avvio del Cronometro
     chrono->start();
     ASSERT_EQ(chrono->getStartStopResume()->GetLabel(), "Stop");
     ASSERT_EQ(chrono->getState(), Running);
-    ASSERT_TRUE(chrono->getReset()->IsShown());
+    ASSERT_TRUE(chrono->getResetBTN()->IsShown());
 }
 
 TEST_F(Chrono_test, checkIsStopped){   //controlla il corretto stop del Cronometro
@@ -51,7 +51,7 @@ TEST_F(Chrono_test, checkIsStopped){   //controlla il corretto stop del Cronomet
     chrono->stop();
     ASSERT_EQ(chrono->getStartStopResume()->GetLabel(), "Resume");
     ASSERT_EQ(chrono->getState(), Stopped);
-    ASSERT_TRUE(chrono->getReset()->IsShown());
+    ASSERT_TRUE(chrono->getResetBTN()->IsShown());
 }
 
 TEST_F(Chrono_test, checkIsResetted){   //controlla il corretto resetBTN del Cronometro
@@ -64,6 +64,6 @@ TEST_F(Chrono_test, checkIsResetted){   //controlla il corretto resetBTN del Cro
     ASSERT_EQ(chrono->getStartStopResume()->GetLabel(), "Start");
     ASSERT_EQ(chrono->getChronoDisplay()->GetLabel(), "00:00:00:00");
     ASSERT_EQ(chrono->getState(), Init);
-    ASSERT_FALSE(chrono->getReset()->IsShown());
+    ASSERT_FALSE(chrono->getResetBTN()->IsShown());
 }
 

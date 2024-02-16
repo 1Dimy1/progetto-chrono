@@ -18,7 +18,7 @@ public:
 
     wxButton *getStartStopResume() const;
     wxStaticText *getChronoDisplay() const;
-    wxButton *getReset() const;
+    wxButton *getResetBTN() const;
     State getState() const;
     int getHh() const;
     int getMm() const;
