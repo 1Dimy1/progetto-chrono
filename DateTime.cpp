@@ -17,7 +17,6 @@ DateTime::DateTime(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPositio
 
     sizer = new wxBoxSizer(wxVERTICAL);
 
-
     m_dateDisplay = new wxStaticText(this, ID_updateDate, "", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL);
     wxFont font = m_dateDisplay->GetFont();
     font.MakeBold().MakeLarger();
