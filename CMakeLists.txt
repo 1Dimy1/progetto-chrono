@@ -22,6 +22,10 @@ set(SOURCE_FILES main.cpp
         Chrono.h
         Timer_Chrono_panel.cpp
         Timer_Chrono_panel.h
+        Date.cpp
+        Date.h
+        Time.cpp
+        Time.h
 )
 add_executable(FirstC ${SOURCE_FILES})
 
