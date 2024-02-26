@@ -6,8 +6,24 @@
 #define PROGETTO_CHRONO_TIME_H
 
 
-class Time {
+#include <wx/wx.h>
 
+class Time {
+public:
+    Time();
+
+    const wxString &getTime() const;
+    void setTime(const wxString &time);
+    const wxString &getFormat() const;
+    void setFormat(const wxString &format);
+
+private:
+    wxTimer m_timeTimer;
+    wxString time;
+    wxString format;
+
+    void updateTime();
+    void OnUpdateTime(wxTimerEvent &);
 };
 
 

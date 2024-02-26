@@ -15,13 +15,16 @@ enum
 
 DateTime::DateTime(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize){
 
+    actualDate = new Date();
+    actualTime = new Time();
+
     sizer = new wxBoxSizer(wxVERTICAL);
 
     m_dateDisplay = new wxStaticText(this, ID_updateDate, "", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL);
     wxFont font = m_dateDisplay->GetFont();
     font.MakeBold().MakeLarger();
     m_dateDisplay->SetFont(font);
-    dateFormat = "formato1";
+    actualDate->setFormat("formato1");
 
     updateDate();
 
@@ -35,7 +38,7 @@ DateTime::DateTime(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPositio
     font = m_clockDisplay->GetFont();
     font.MakeBold().MakeLarger();
     m_clockDisplay->SetFont(font);
-    clockFormat = "24h";
+    actualTime->setFormat("24h");
 
     updateClock();
 
@@ -53,30 +56,18 @@ DateTime::DateTime(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPositio
 
 
     m_dateClockTimer.Bind(wxEVT_TIMER, &DateTime::OnUpdateDateClock, this);
-    m_dateClockTimer.Start(200);
+    m_dateClockTimer.Start(50);
     Bind(wxEVT_RADIOBOX, &DateTime::OnSelectTimeFormat, this, ID_timeFormat);
     Bind(wxEVT_RADIOBOX, &DateTime::OnSelectDateFormat, this, ID_dateFormat);
 
 }
 
 void DateTime::updateClock() {
-
-    if(clockFormat == "24h"){
-        m_clockDisplay->SetLabel(wxDateTime::Now().FormatISOTime());
-    }
-    else{
-        m_clockDisplay->SetLabel(wxDateTime::Now().Format("%I:%M:%S %p"));
-    }
+    m_clockDisplay->SetLabel(actualTime->getTime());
 }
 
 void DateTime::updateDate() {
-
-    if(dateFormat == "formato1"){
-        m_dateDisplay->SetLabel(wxDateTime::Now().FormatISODate());
-    }
-    else{
-        m_dateDisplay->SetLabel(wxDateTime::Now().Format(wxT("%B %d %Y")));
-    }
+    m_dateDisplay->SetLabel(actualDate->getDate());
 }
 
 void DateTime::OnUpdateDateClock(wxTimerEvent &event) {
@@ -86,22 +77,22 @@ void DateTime::OnUpdateDateClock(wxTimerEvent &event) {
 
 void DateTime::OnSelectTimeFormat(wxCommandEvent &event) {
     if(radioClockBox->GetSelection() == 0){
-        clockFormat = "24h";
+        actualTime->setFormat("24h");
         updateClock();
     }
     else{
-        clockFormat = "12h";
+        actualTime->setFormat("12h");
         updateClock();
     }
 }
 
 void DateTime::OnSelectDateFormat(wxCommandEvent &event) {
     if(radioDateBox->GetSelection() == 0){
-        dateFormat = "formato1";
+        actualDate->setFormat("formato1");
         updateDate();
     }
     else{
-        dateFormat = "formato2";
+        actualDate->setFormat("formato2");
         updateDate();
     }
 }

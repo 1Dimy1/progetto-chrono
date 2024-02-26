@@ -5,19 +5,21 @@
 #ifndef PROGETTO_CHRONO_DATETIME_H
 #define PROGETTO_CHRONO_DATETIME_H
 
-#include<wx/wx.h>
+#include <wx/wx.h>
+#include "Date.h"
+#include "Time.h"
 
 class DateTime: public wxPanel {
 public:
     DateTime(wxWindow* parent);
 private:
     wxTimer m_dateClockTimer;
+    Time *actualTime;
     wxStaticText *m_clockDisplay;
     wxRadioBox *radioClockBox;
-    wxString clockFormat;
+    Date *actualDate;
     wxStaticText *m_dateDisplay;
     wxRadioBox *radioDateBox;
-    wxString dateFormat;
     wxBoxSizer *sizer;
 
     void updateClock();
