@@ -26,11 +26,10 @@ DateTime::DateTime(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPositio
     updateDate();
 
     wxArrayString *dateSelection = new wxArrayString;
-    dateSelection->clear();
     dateSelection->Add("tipo1");
     dateSelection->Add("tipo2");
     this->radioDateBox = new wxRadioBox(this, ID_dateFormat, "Seleziona formato data", wxPoint(20, 80), wxDefaultSize, *dateSelection, 1,  wxRA_SPECIFY_ROWS);
-
+    delete dateSelection;
 
     m_clockDisplay = new wxStaticText(this, ID_updateTime, "", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL);
     font = m_clockDisplay->GetFont();
@@ -44,7 +43,7 @@ DateTime::DateTime(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPositio
     selection->Add("24h");
     selection->Add("12h");
     this->radioClockBox = new wxRadioBox(this, ID_timeFormat, "Seleziona formato ora", wxDefaultPosition, wxDefaultSize, *selection, 1,  wxRA_SPECIFY_ROWS);
-
+    delete selection;
 
     sizer->Add(m_dateDisplay, 0,  wxALL, 5);
     sizer->Add(radioDateBox, 0, wxALL, 5);
