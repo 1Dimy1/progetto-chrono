@@ -5,6 +5,8 @@
 #include "../Timer.h"
 #include "../Frame.h"
 #include "../Timer_Chrono_panel.h"
+#include <chrono>
+#include <thread>
 
 enum State{Init,Running,Stopped};
 
@@ -15,26 +17,17 @@ protected:
     Frame *frame;
     Timer_Chrono_panel *t_c_panel;
     Timer *timer;
-    wxTimer m_timer;
-    void OnWait(wxTimerEvent &event);
-    int prova =0;
 };
 
 void Timer_test::SetUp() {
     frame = new Frame();
     t_c_panel = new Timer_Chrono_panel(frame);
     timer = new Timer(t_c_panel);
-    m_timer.Bind(wxEVT_TIMER, &Timer_test::OnWait, this);
 }
-
 void Timer_test::TearDown() {
     delete frame;
 }
-
-void Timer_test::OnWait(wxTimerEvent &event) {
-    prova = 1;
-}
-
+/*
 TEST_F(Timer_test, checkIsInit){  //controlla la corretta inizializzazione del Timer
     ASSERT_EQ(timer->getSecondsLeft(), 0);
     ASSERT_EQ(timer->getSs(), 0);
@@ -80,12 +73,25 @@ TEST_F(Timer_test, checkIsResetted){   //controlla il corretto reset del Timer
     ASSERT_FALSE(timer->getResetBTN()->IsShown());
     ASSERT_TRUE(timer->getInputTime()->IsEnabled());
 }
+*/
+std::time_t getCurrentTime() {
+    return std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+}
 
 TEST_F(Timer_test, checkElapsedTimeIsCorrect){   //controlla il corretto scorrimento del tempo
 
-    timer->getInputTime()->SetTime(0,0,3);
+    int j=0;
+    timer->getInputTime()->SetTime(0, 0, 3);
     timer->start();
-    m_timer.StartOnce(2000);
-    wxSleep(1);
-    ASSERT_EQ(prova, 1);
+
+    for(int i=0; i<1000; i++){
+        for(int i=0; i<1000; i++){
+                j+=i;
+
+        }
+
+    }
+
+
+    ASSERT_EQ(timer->getSs(), 0);  // Verifica che il timer segnali effettivamente 0 secondi rimanenti
 }

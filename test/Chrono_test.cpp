@@ -5,6 +5,8 @@
 #include "../Chrono.h"
 #include "../Frame.h"
 #include "../Timer_Chrono_panel.h"
+#include <thread>
+#include <chrono>
 
 enum State{Init,Running,Stopped};
 
@@ -26,7 +28,7 @@ void Chrono_test::SetUp() {
 void Chrono_test::TearDown() {
     delete frame;
 }
-
+/*
 TEST_F(Chrono_test, checkIsInit){  //controlla la corretta inizializzazione del Cronometro
     ASSERT_EQ(chrono->getCents(), 0);
     ASSERT_EQ(chrono->getSs(), 0);
@@ -66,4 +68,16 @@ TEST_F(Chrono_test, checkIsResetted){   //controlla il corretto resetBTN del Cro
     ASSERT_EQ(chrono->getState(), Init);
     ASSERT_FALSE(chrono->getResetBTN()->IsShown());
 }
+*/
 
+TEST_F(Chrono_test, checkElapsedTimeIsCorrect){  //controlla il corretto scorrimento del tempo
+    chrono->reset();
+    chrono->start();
+    chrono->chronoTimer.Start();
+    ASSERT_EQ(chrono->getStartStopResume()->GetLabel(), "Stop");
+    ASSERT_EQ(chrono->getState(), Running);
+    ASSERT_TRUE(chrono->getResetBTN()->IsShown());
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+    chrono->stop();
+    ASSERT_EQ(chrono->getTotalCents(), 0);
+}

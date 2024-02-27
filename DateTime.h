@@ -12,6 +12,10 @@
 class DateTime: public wxPanel {
 public:
     DateTime(wxWindow* parent);
+    Time *getActualTime() const;
+    Date *getActualDate() const;
+    void updateClock();
+    void updateDate();
 private:
     wxTimer m_dateClockTimer;
     Time *actualTime;
@@ -21,9 +25,6 @@ private:
     wxStaticText *m_dateDisplay;
     wxRadioBox *radioDateBox;
     wxBoxSizer *sizer;
-
-    void updateClock();
-    void updateDate();
     void OnUpdateDateClock(wxTimerEvent &);
     void OnSelectDateFormat(wxCommandEvent &event);
     void OnSelectTimeFormat(wxCommandEvent &event);

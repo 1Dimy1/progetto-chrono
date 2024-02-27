@@ -10,6 +10,7 @@
 class Chrono : public wxPanel{
 public:
     Chrono(wxWindow *parent);
+    wxTimer chronoTimer;
     void start();
     void stop();
     void resume();
@@ -28,7 +29,7 @@ public:
 
 private:
 
-    wxTimer chronoTimer;
+
     wxStaticText *chronoDisplay;
     wxButton *start_stop_resume;
     wxButton *resetBTN;

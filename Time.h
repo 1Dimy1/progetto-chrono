@@ -11,7 +11,7 @@
 class Time {
 public:
     Time();
-
+    void updateTime();
     const wxString &getTime() const;
     void setTime(const wxString &time);
     const wxString &getFormat() const;
@@ -22,7 +22,6 @@ private:
     wxString time;
     wxString format;
 
-    void updateTime();
     void OnUpdateTime(wxTimerEvent &);
 };
 

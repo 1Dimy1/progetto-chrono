@@ -10,6 +10,7 @@
 class Date {
 public:
     Date();
+    void updateDate();
     const wxString &getDate() const;
     void setDate(const wxString &date);
     const wxString &getFormat() const;
@@ -18,8 +19,6 @@ private:
     wxTimer m_dateTimer;
     wxString date;
     wxString format;
-
-    void updateDate();
     void OnUpdateDate(wxTimerEvent &);
 };
 

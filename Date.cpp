@@ -48,4 +48,5 @@ const wxString &Date::getFormat() const {
 
 void Date::setFormat(const wxString &format) {
     Date::format = format;
+    updateDate();
 }

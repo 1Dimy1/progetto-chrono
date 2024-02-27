@@ -306,17 +306,9 @@ build test/CMakeFiles/Google_Tests_run.dir/Timer_test.cpp.o: CXX_COMPILER__Googl
   OBJECT_DIR = test/CMakeFiles/Google_Tests_run.dir
   OBJECT_FILE_DIR = test/CMakeFiles/Google_Tests_run.dir
 
-build test/CMakeFiles/Google_Tests_run.dir/Time_test.cpp.o: CXX_COMPILER__Google_Tests_run_unscanned_Debug /home/dimy1/CLionProjects/progetto-chrono/test/Time_test.cpp || cmake_object_order_depends_target_Google_Tests_run
+build test/CMakeFiles/Google_Tests_run.dir/Date_Time_test.cpp.o: CXX_COMPILER__Google_Tests_run_unscanned_Debug /home/dimy1/CLionProjects/progetto-chrono/test/Date_Time_test.cpp || cmake_object_order_depends_target_Google_Tests_run
   DEFINES = -D_FILE_OFFSET_BITS=64 -D__WXGTK__
-  DEP_FILE = test/CMakeFiles/Google_Tests_run.dir/Time_test.cpp.o.d
-  FLAGS = -pthread -pthread -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -isystem /usr/local/lib/wx/include/gtk3-unicode-static-3.2 -isystem /usr/local/include/wx-3.2 -isystem /home/dimy1/CLionProjects/progetto-chrono/test/googletest-main/googletest/include -isystem /home/dimy1/CLionProjects/progetto-chrono/test/googletest-main/googletest
-  OBJECT_DIR = test/CMakeFiles/Google_Tests_run.dir
-  OBJECT_FILE_DIR = test/CMakeFiles/Google_Tests_run.dir
-
-build test/CMakeFiles/Google_Tests_run.dir/Date_test.cpp.o: CXX_COMPILER__Google_Tests_run_unscanned_Debug /home/dimy1/CLionProjects/progetto-chrono/test/Date_test.cpp || cmake_object_order_depends_target_Google_Tests_run
-  DEFINES = -D_FILE_OFFSET_BITS=64 -D__WXGTK__
-  DEP_FILE = test/CMakeFiles/Google_Tests_run.dir/Date_test.cpp.o.d
+  DEP_FILE = test/CMakeFiles/Google_Tests_run.dir/Date_Time_test.cpp.o.d
   FLAGS = -pthread -pthread -g -std=gnu++14 -fdiagnostics-color=always
   INCLUDES = -isystem /usr/local/lib/wx/include/gtk3-unicode-static-3.2 -isystem /usr/local/include/wx-3.2 -isystem /home/dimy1/CLionProjects/progetto-chrono/test/googletest-main/googletest/include -isystem /home/dimy1/CLionProjects/progetto-chrono/test/googletest-main/googletest
   OBJECT_DIR = test/CMakeFiles/Google_Tests_run.dir
@@ -330,7 +322,7 @@ build test/CMakeFiles/Google_Tests_run.dir/Date_test.cpp.o: CXX_COMPILER__Google
 #############################################
 # Link the executable test/Google_Tests_run
 
-build test/Google_Tests_run: CXX_EXECUTABLE_LINKER__Google_Tests_run_Debug test/CMakeFiles/Google_Tests_run.dir/runAllTests.cpp.o test/CMakeFiles/Google_Tests_run.dir/Chrono_test.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/App.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/Frame.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/DateTime.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/Timer.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/Chrono.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/Timer_Chrono_panel.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/Time.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/Date.cpp.o test/CMakeFiles/Google_Tests_run.dir/Timer_test.cpp.o test/CMakeFiles/Google_Tests_run.dir/Time_test.cpp.o test/CMakeFiles/Google_Tests_run.dir/Date_test.cpp.o | lib/libgtest.a lib/libgtest_main.a /usr/local/lib/libwx_gtk3u_core-3.2.a /usr/local/lib/libwx_baseu-3.2.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
+build test/Google_Tests_run: CXX_EXECUTABLE_LINKER__Google_Tests_run_Debug test/CMakeFiles/Google_Tests_run.dir/runAllTests.cpp.o test/CMakeFiles/Google_Tests_run.dir/Chrono_test.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/App.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/Frame.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/DateTime.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/Timer.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/Chrono.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/Timer_Chrono_panel.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/Time.cpp.o test/CMakeFiles/Google_Tests_run.dir/__/Date.cpp.o test/CMakeFiles/Google_Tests_run.dir/Timer_test.cpp.o test/CMakeFiles/Google_Tests_run.dir/Date_Time_test.cpp.o | lib/libgtest.a lib/libgtest_main.a /usr/local/lib/libwx_gtk3u_core-3.2.a /usr/local/lib/libwx_baseu-3.2.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
   FLAGS = -pthread -pthread -g
   LINK_LIBRARIES = -Wl,-rpath,/usr/local/lib  lib/libgtest.a  lib/libgtest_main.a  -L/usr/local/lib  -pthread  /usr/local/lib/libwx_gtk3u_core-3.2.a  /usr/local/lib/libwx_baseu-3.2.a  -lgthread-2.0  -pthread  -lX11  -lSM  -lxkbcommon  -lgtk-3  -lgdk-3  -lpangocairo-1.0  -latk-1.0  -lcairo-gobject  -lcairo  -lgdk_pixbuf-2.0  -lgio-2.0  -lXtst  -lpangoft2-1.0  -lpango-1.0  -lgobject-2.0  -lglib-2.0  -lharfbuzz  -lfontconfig  -lfreetype  -lwxscintilla-3.2  -lexpat  -lpcre2-32  -lpng  -ljpeg  -ltiff  -ljbig  -lz  -lm  lib/libgtest.a
   LINK_PATH = -L/usr/local/lib

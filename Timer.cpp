@@ -59,7 +59,6 @@ void Timer::start() {
     secondsLeft = ss + mm*60 + hh*3600;
 
     if(secondsLeft != 0){
-
         updateTimer();
         timerTimer.Start(1000);
         state = Running;
@@ -95,7 +94,6 @@ void Timer::reset() {
 }
 
 void Timer::OnUpdateTimer(wxTimerEvent &event) {
-
     secondsLeft --;
 
     hh = (int) (secondsLeft/3600);

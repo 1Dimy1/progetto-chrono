@@ -28,8 +28,8 @@ set(SOURCE_FILES runAllTests.cpp
         ../Date.h
 
         Timer_test.cpp
-        Time_test.cpp
-        Date_test.cpp)
+        Date_Time_test.cpp
+)
 
 add_executable(Google_Tests_run ${SOURCE_FILES})
 

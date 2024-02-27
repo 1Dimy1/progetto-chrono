@@ -78,10 +78,12 @@ void DateTime::OnUpdateDateClock(wxTimerEvent &event) {
 void DateTime::OnSelectTimeFormat(wxCommandEvent &event) {
     if(radioClockBox->GetSelection() == 0){
         actualTime->setFormat("24h");
+        actualTime->updateTime();
         updateClock();
     }
     else{
         actualTime->setFormat("12h");
+        actualTime->updateTime();
         updateClock();
     }
 }
@@ -89,10 +91,20 @@ void DateTime::OnSelectTimeFormat(wxCommandEvent &event) {
 void DateTime::OnSelectDateFormat(wxCommandEvent &event) {
     if(radioDateBox->GetSelection() == 0){
         actualDate->setFormat("formato1");
+        actualDate->updateDate();
         updateDate();
     }
     else{
         actualDate->setFormat("formato2");
+        actualDate->updateDate();
         updateDate();
     }
+}
+
+Time *DateTime::getActualTime() const {
+    return actualTime;
+}
+
+Date *DateTime::getActualDate() const {
+    return actualDate;
 }

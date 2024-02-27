@@ -49,4 +49,5 @@ const wxString &Time::getFormat() const {
 
 void Time::setFormat(const wxString &format) {
     Time::format = format;
+    updateTime();
 }
