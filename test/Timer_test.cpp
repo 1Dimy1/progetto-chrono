@@ -1,7 +1,6 @@
 //
 // Created by dimy1 on 16/02/24.
 //
-
 #include "gtest/gtest.h"
 #include "../Timer.h"
 #include "../Frame.h"
@@ -16,16 +15,24 @@ protected:
     Frame *frame;
     Timer_Chrono_panel *t_c_panel;
     Timer *timer;
+    wxTimer m_timer;
+    void OnWait(wxTimerEvent &event);
+    int prova =0;
 };
 
 void Timer_test::SetUp() {
     frame = new Frame();
     t_c_panel = new Timer_Chrono_panel(frame);
     timer = new Timer(t_c_panel);
+    m_timer.Bind(wxEVT_TIMER, &Timer_test::OnWait, this);
 }
 
 void Timer_test::TearDown() {
     delete frame;
+}
+
+void Timer_test::OnWait(wxTimerEvent &event) {
+    prova = 1;
 }
 
 TEST_F(Timer_test, checkIsInit){  //controlla la corretta inizializzazione del Timer
@@ -74,3 +81,11 @@ TEST_F(Timer_test, checkIsResetted){   //controlla il corretto reset del Timer
     ASSERT_TRUE(timer->getInputTime()->IsEnabled());
 }
 
+TEST_F(Timer_test, checkElapsedTimeIsCorrect){   //controlla il corretto scorrimento del tempo
+
+    timer->getInputTime()->SetTime(0,0,3);
+    timer->start();
+    m_timer.StartOnce(2000);
+    wxSleep(1);
+    ASSERT_EQ(prova, 1);
+}

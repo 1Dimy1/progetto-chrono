@@ -22,7 +22,14 @@ set(SOURCE_FILES runAllTests.cpp
         ../Chrono.h
         ../Timer_Chrono_panel.cpp
         ../Timer_Chrono_panel.h
-        Timer_test.cpp)
+        ../Time.cpp
+        ../Time.h
+        ../Date.cpp
+        ../Date.h
+
+        Timer_test.cpp
+        Time_test.cpp
+        Date_test.cpp)
 
 add_executable(Google_Tests_run ${SOURCE_FILES})
 
