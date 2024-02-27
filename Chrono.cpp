@@ -25,14 +25,13 @@ Chrono::Chrono(wxWindow *parent) : wxPanel(parent, wxID_ANY, wxPoint(0,70), wxSi
 
     state = Init;
 
-
     chronoTimer.Bind(wxEVT_TIMER, &Chrono::OnUpdateChrono, this);
     Bind(wxEVT_BUTTON, &Chrono::OnStartStopResume, this, ID_startStopResumeButton);
     Bind(wxEVT_BUTTON, &Chrono::OnReset, this, ID_resetButton);
 
 }
 
-void Chrono::updateChrono(){
+void Chrono::updateChronoDisplay(){
 
     std::string time = "";
     if(hh<10){
@@ -55,6 +54,15 @@ void Chrono::updateChrono(){
 
 }
 
+void Chrono::updateChrono(){
+    totalCents ++;
+
+    hh = (int) (totalCents/360000);
+    mm = (int) ((totalCents - (hh*360000))/6000);
+    ss = (int) ((totalCents - ((hh*360000) + (mm*6000)))/100);
+    cents = totalCents - ((hh*360000) + (mm*6000) + (ss*100));
+}
+
 void Chrono::start(){
     hh = 0;
     mm = 0;
@@ -63,7 +71,7 @@ void Chrono::start(){
 
     totalCents = 0;
 
-    updateChrono();
+    updateChronoDisplay();
     chronoTimer.Start(10);
     state = Running;
     resetBTN->Show(true);
@@ -91,22 +99,15 @@ void Chrono::reset(){
 
     totalCents = 0;
 
-    updateChrono();
+    updateChronoDisplay();
     state = Init;
     resetBTN->Show(false);
     start_stop_resume->SetLabel("Start");
 }
 
 void Chrono::OnUpdateChrono(wxTimerEvent &event){
-
-    totalCents ++;
-
-    hh = (int) (totalCents/360000);
-    mm = (int) ((totalCents - (hh*360000))/6000);
-    ss = (int) ((totalCents - ((hh*360000) + (mm*6000)))/100);
-    cents = totalCents - ((hh*360000) + (mm*6000) + (ss*100));
-
     updateChrono();
+    updateChronoDisplay();
 }
 void Chrono::OnReset(wxCommandEvent &event){
     reset();

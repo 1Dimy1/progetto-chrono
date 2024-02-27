@@ -27,6 +27,9 @@ public:
     int getCents() const;
     int getTotalCents() const;
 
+    void OnStartStopResume(wxCommandEvent &event);
+
+
 private:
 
 
@@ -41,10 +44,10 @@ private:
     int cents = 0;
     int totalCents = 0;
 
+    void updateChronoDisplay();
     void updateChrono();
     void OnUpdateChrono(wxTimerEvent &event);
     void OnReset(wxCommandEvent &event);
-    void OnStartStopResume(wxCommandEvent &event);
 
 };
 

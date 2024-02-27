@@ -5,8 +5,6 @@
 #include "../Timer.h"
 #include "../Frame.h"
 #include "../Timer_Chrono_panel.h"
-#include <chrono>
-#include <thread>
 
 enum State{Init,Running,Stopped};
 
@@ -27,7 +25,7 @@ void Timer_test::SetUp() {
 void Timer_test::TearDown() {
     delete frame;
 }
-/*
+
 TEST_F(Timer_test, checkIsInit){  //controlla la corretta inizializzazione del Timer
     ASSERT_EQ(timer->getSecondsLeft(), 0);
     ASSERT_EQ(timer->getSs(), 0);
@@ -72,26 +70,4 @@ TEST_F(Timer_test, checkIsResetted){   //controlla il corretto reset del Timer
     ASSERT_EQ(timer->getState(), Init);
     ASSERT_FALSE(timer->getResetBTN()->IsShown());
     ASSERT_TRUE(timer->getInputTime()->IsEnabled());
-}
-*/
-std::time_t getCurrentTime() {
-    return std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-}
-
-TEST_F(Timer_test, checkElapsedTimeIsCorrect){   //controlla il corretto scorrimento del tempo
-
-    int j=0;
-    timer->getInputTime()->SetTime(0, 0, 3);
-    timer->start();
-
-    for(int i=0; i<1000; i++){
-        for(int i=0; i<1000; i++){
-                j+=i;
-
-        }
-
-    }
-
-
-    ASSERT_EQ(timer->getSs(), 0);  // Verifica che il timer segnali effettivamente 0 secondi rimanenti
 }
