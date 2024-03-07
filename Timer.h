@@ -29,20 +29,16 @@ public:
     int getSs() const;
     int getSecondsLeft() const;
 
+    void setHh(int hh);
+    void setMm(int mm);
+    void setSs(int ss);
 private:
     wxTimer timerTimer;
     wxStaticText *timerDisplay;
     wxTimePickerCtrl *inputTime;
     wxButton *start_stop_resume;
     wxButton *resetBTN;
-public:
-    void setHh(int hh);
 
-    void setMm(int mm);
-
-    void setSs(int ss);
-
-private:
     State state; //"Init, Running, Stopped"
     int hh = 0;
     int mm = 0;
