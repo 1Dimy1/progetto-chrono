@@ -24,7 +24,7 @@ DateTime::DateTime(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPositio
     wxFont font = m_dateDisplay->GetFont();
     font.MakeBold().MakeLarger();
     m_dateDisplay->SetFont(font);
-    actualDate->setFormat("formato1");
+    actualDate->setFormat(Date::formato1);
 
     updateDate();
 
@@ -38,7 +38,7 @@ DateTime::DateTime(wxWindow *parent): wxPanel(parent, wxID_ANY, wxDefaultPositio
     font = m_clockDisplay->GetFont();
     font.MakeBold().MakeLarger();
     m_clockDisplay->SetFont(font);
-    actualTime->setFormat("24h");
+    actualTime->setFormat(Time::h24);
 
     updateClock();
 
@@ -77,12 +77,12 @@ void DateTime::OnUpdateDateClock(wxTimerEvent &event) {
 
 void DateTime::OnSelectTimeFormat(wxCommandEvent &event) {
     if(radioClockBox->GetSelection() == 0){
-        actualTime->setFormat("24h");
+        actualTime->setFormat(Time::h24);
         actualTime->updateTime();
         updateClock();
     }
     else{
-        actualTime->setFormat("12h");
+        actualTime->setFormat(Time::h12);
         actualTime->updateTime();
         updateClock();
     }
@@ -90,12 +90,12 @@ void DateTime::OnSelectTimeFormat(wxCommandEvent &event) {
 
 void DateTime::OnSelectDateFormat(wxCommandEvent &event) {
     if(radioDateBox->GetSelection() == 0){
-        actualDate->setFormat("formato1");
+        actualDate->setFormat(Date::formato1);
         actualDate->updateDate();
         updateDate();
     }
     else{
-        actualDate->setFormat("formato2");
+        actualDate->setFormat(Date::formato2);
         actualDate->updateDate();
         updateDate();
     }

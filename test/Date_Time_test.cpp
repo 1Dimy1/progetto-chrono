@@ -27,15 +27,15 @@ void Date_Time_test::TearDown() {
 
 
 TEST_F(Date_Time_test, checkTimeIsCorrect){  //controlla che l'ora sia corretta
-    dt_panel->getActualTime()->setFormat("24h");
+    dt_panel->getActualTime()->setFormat(Time::h24);
     ASSERT_EQ(dt_panel->getActualTime()->getTime(), wxDateTime::Now().FormatISOTime());
-    dt_panel->getActualTime()->setFormat("12h");
+    dt_panel->getActualTime()->setFormat(Time::h12);
     ASSERT_EQ(dt_panel->getActualTime()->getTime(), wxDateTime::Now().Format("%I:%M:%S %p"));
 }
 
 TEST_F(Date_Time_test, checkDateIsCorrect){  //controlla che la data sia corretta
-    dt_panel->getActualDate()->setFormat("formato1");
+    dt_panel->getActualDate()->setFormat(Date::formato1);
     ASSERT_EQ(dt_panel->getActualDate()->getDate(), wxDateTime::Now().FormatISODate());
-    dt_panel->getActualDate()->setFormat("formato2");
+    dt_panel->getActualDate()->setFormat(Date::formato2);
     ASSERT_EQ(dt_panel->getActualDate()->getDate(), wxDateTime::Now().Format(wxT("%B %d %Y")));
 }

@@ -13,7 +13,7 @@ enum
 Date::Date(){
 
     date = "";
-    format = "formato1";
+    format = formato1;
 
     updateDate();
 
@@ -22,7 +22,7 @@ Date::Date(){
 }
 
 void Date::updateDate(){
-    if(format == "formato1"){
+    if(format == formato1){
         date = wxDateTime::Now().FormatISODate();
     }
     else{
@@ -42,11 +42,11 @@ void Date::setDate(const wxString &date) {
     Date::date = date;
 }
 
-const wxString &Date::getFormat() const {
+Date::Format Date::getFormat() const {
     return format;
 }
 
-void Date::setFormat(const wxString &format) {
+void Date::setFormat(Format format) {
     Date::format = format;
     updateDate();
 }

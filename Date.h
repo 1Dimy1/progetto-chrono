@@ -13,12 +13,13 @@ public:
     void updateDate();
     const wxString &getDate() const;
     void setDate(const wxString &date);
-    const wxString &getFormat() const;
-    void setFormat(const wxString &format);
+    enum Format{formato1,formato2};
+    Format getFormat() const;
+    void setFormat(Format format);
 private:
     wxTimer m_dateTimer;
     wxString date;
-    wxString format;
+    Format format;
     void OnUpdateDate(wxTimerEvent &);
 };
 

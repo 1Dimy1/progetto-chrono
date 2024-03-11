@@ -13,7 +13,7 @@ enum
 Time::Time(){
 
     time = "";
-    format = "24h";
+    format = h24;
 
     updateTime();
 
@@ -23,7 +23,7 @@ Time::Time(){
 
 void Time::updateTime() {
 
-    if(format == "24h"){
+    if(format == h24){
         time = wxDateTime::Now().FormatISOTime();
     }
     else{
@@ -43,11 +43,11 @@ void Time::setTime(const wxString &time) {
     Time::time = time;
 }
 
-const wxString &Time::getFormat() const {
+Time::Format Time::getFormat() const {
     return format;
 }
 
-void Time::setFormat(const wxString &format) {
+void Time::setFormat(Format format) {
     Time::format = format;
     updateTime();
 }

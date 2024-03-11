@@ -14,13 +14,14 @@ public:
     void updateTime();
     const wxString &getTime() const;
     void setTime(const wxString &time);
-    const wxString &getFormat() const;
-    void setFormat(const wxString &format);
+    enum Format{h12,h24};
+    Format getFormat() const;
+    void setFormat(Format format);
 
 private:
     wxTimer m_timeTimer;
     wxString time;
-    wxString format;
+    Format format;
 
     void OnUpdateTime(wxTimerEvent &);
 };
